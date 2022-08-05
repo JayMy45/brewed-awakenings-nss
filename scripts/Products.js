@@ -14,9 +14,9 @@ document.addEventListener("click",
         if (itemClicked.id.startsWith("product")) {
             const [, productId] = itemClicked.id.split("--");
             //iterate the products object array imported from database
-            for (const product of products) {
-                if (product.id === parseInt(productId))
-                    window.alert(`          ${product.name}\n           $${product.price.toFixed(2)}`)
+            for (const productObject of products) {
+                if (productObject.id === parseInt(productId))
+                    window.alert(`          ${productObject.name}\n           $${productObject.price.toFixed(2)}`)
             }
         }
     }
