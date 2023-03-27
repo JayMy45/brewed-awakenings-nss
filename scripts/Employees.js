@@ -10,19 +10,21 @@ document.addEventListener('click',
     (clickEvent) => {
         //declare a constant that will store the clickEvent target
         const itemClicked = clickEvent.target //what does .target do?
+        console.log(itemClicked.id)
         //write logic for when a target is clicked...what should be done...?
-        if (itemClicked.id.startsWith("employee")) {  //if the id of the item clicked starts with employee then...(below)
-            const [, employeeId] = itemClicked.id.split("--"); //const of employeeId (destructured results or array created) == what's behind the -- 
-            //.splits creates an array of the id; employee--1 to ["employee--"", "1"] therefore employeeId becomes a string "1".
+        // if (itemClicked.id.startsWith("employee")) {  //if the id of the item clicked starts with employee then...(below)
+        // const [, employeeId] = itemClicked.id.split("--"); //const of employeeId (destructured results or array created) == what's behind the -- 
+        //.splits creates an array of the id; employee--1 to ["employee--"", "1"] therefore employeeId becomes a string "1".
 
-            for (const employeeObject of employees) {
-                if (employeeObject.id === parseInt(employeeId)) { //parseInt(employeeId is transformed to integer from "1" so the comparison can be made)
-                    const productSold = numberOfProductsSold(employeeObject)
-                    // window.alert(`  ${employeeObject.name} sold ${employeeObject.id} product(s)`)
-                    window.alert(`  ${employeeObject.name} sold ${productSold} product(s)`)
-                }
-
+        for (const employeeObject of employees) {
+            console.log(itemClicked.id)
+            if (employeeObject.id === parseInt(itemClicked.id)) { //parseInt(employeeId is transformed to integer from "1" so the comparison can be made)
+                console.log(itemClicked.id)
+                const productSold = numberOfProductsSold(employeeObject)
+                // window.alert(`  ${employeeObject.name} sold ${employeeObject.id} product(s)`)
+                window.alert(`  ${employeeObject.name} sold ${productSold} product(s)`)
             }
+
         }
     }
 )
@@ -49,7 +51,7 @@ export const Employees = () => {
     let html = "<ul>"
 
     for (const employee of employees) {
-        html += `<li id="employee--${employee.id}">${employee.name}</li>`
+        html += `<li id="${employee.id}">${employee.name}</li>`
     }
 
     html += "</ul>"
